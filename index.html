@@ -10,6 +10,29 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
 </head>
+<script>
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const data = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value,
+    message: document.getElementById("message").value
+  };
+
+  await fetch("https://script.google.com/macros/s/AKfycbwgkWbA2wro1QaccTcpmZZWe_7ttyz2I8n96VZLHwRgDcriVW8Rz-sv5x6795PEpq2yOw/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  });
+
+  alert("Message sent successfully!");
+  form.reset();
+});
+</script>
+
 <body id="page-top">
 
 <!-- Navigation -->
@@ -34,7 +57,7 @@
 <!-- Masthead -->
 <header class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center flex-column">
-        <img class="masthead-avatar mb-5" src="assets\img\pic-photoaidcom-cropped.jpeg" alt="Avatar" />
+        <img class="masthead-avatar mb-5" src="assets/img/pic-photoaidcom-cropped.jpeg" alt="Avatar" />
         <h1 class="masthead-heading text-uppercase mb-0">Kavya S</h1>
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
@@ -123,18 +146,23 @@
             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
             <div class="divider-custom-line"></div>
         </div>
-        <div class="text-center">
-            <p><i class="fas fa-envelope"></i> 2k22cse077@kiot.ac.in</p>
-            <p><i class="fas fa-phone"></i> +91 99948 07970</p>
-            <p>
-                <a href="https://www.linkedin.com/in/kavya-s-ba9b09299" target="_blank">
-                    <i class="fab fa-linkedin"></i> LinkedIn Profile
-                </a>
-            </p>
-            <a class="btn btn-primary mt-3" href="D:\startbootstrap-freelancer-gh-pages\startbootstrap-freelancer-gh-pages\assets\KAVYA_S_Resume.pdf" download>
-                <i class="fas fa-download"></i> Download Resume
-            </a>
-        </div>
+            <form id="contactForm" class="mx-auto" style="max-width:500px;">
+                <input class="form-control mb-3" id="name" placeholder="Your Name" required>
+                <input type="email" class="form-control mb-3" id="email" placeholder="Your Email" required>
+                <input class="form-control mb-3" id="phone" placeholder="Phone Number">
+                <textarea class="form-control mb-3" id="message" placeholder="Your Message" required></textarea>
+            
+                <button class="btn btn-primary w-100" type="submit">Send Message</button>
+           </form>
+    
+    <div class="text-center mt-4">
+        <p><i class="fas fa-envelope"></i> 2k22cse077@kiot.ac.in</p>
+        <p><i class="fas fa-phone"></i> +91 99948 07970</p>
+        <a class="btn btn-outline-primary mt-2" href="assets/KAVYA_S_Resume.pdf" download>
+            <i class="fas fa-download"></i> Download Resume
+        </a>
+    </div>
+
     </div>
 </section>
 
